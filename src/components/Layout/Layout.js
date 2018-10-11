@@ -74,7 +74,7 @@ class Layout extends Component {
 
                         <h3>Original</h3>
 
-                        <ItemList video={this.originSource}/>
+                        <ItemList video={this.originSource} onPlay={this.playVideo} />
 
                         <h3>Crops</h3>
                         <button>New Crop</button>
