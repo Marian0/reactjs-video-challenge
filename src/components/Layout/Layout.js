@@ -3,6 +3,7 @@ import './Layout.css';
 import Header from "../Header/Header";
 import Player from "../Player/Player";
 import ItemList from "../ItemList/ItemList";
+import VideoModal from "../VideoModal/VideoModal";
 
 
 class Layout extends Component {
@@ -20,7 +21,7 @@ class Layout extends Component {
 
         this.originSource.onPlay = this.playVideo;
 
-        const crops  = [
+        const crops = [
 
             {
                 src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -44,9 +45,13 @@ class Layout extends Component {
         ];
         this.state = {
             currentVideo: this.originSource,
+            modalProps: {
+                isVisible: false,
+                video: null,
+                key: null
+            },
             crops,
         };
-
 
 
     }
@@ -55,6 +60,25 @@ class Layout extends Component {
         this.setState({currentVideo: video});
     };
 
+    newVideo = () => {
+        this.setState({
+            modalProps: {
+                isVisible: true,
+                video: null,
+                key: null
+            }
+        });
+    };
+
+    closeModal = () => {
+        this.setState({
+            modalProps: {
+                isVisible: false,
+                video: null,
+                key: null
+            }
+        });
+    };
 
     render() {
 
@@ -62,12 +86,14 @@ class Layout extends Component {
             <div className="App">
                 <Header/>
 
+                <VideoModal {...this.state.modalProps} onModalClosed={this.closeModal} />
+
                 <div className="container">
 
                     <div className="col-md-7">
 
                         <h2>{this.state.currentVideo.name}</h2>
-                        <Player video={this.state.currentVideo} showControls={true} />
+                        <Player video={this.state.currentVideo} showControls={true}/>
 
                     </div>
 
@@ -75,15 +101,15 @@ class Layout extends Component {
 
                         <h3>Original</h3>
 
-                        <ItemList video={this.originSource} onPlay={this.playVideo} />
+                        <ItemList video={this.originSource} onPlay={this.playVideo}/>
 
                         <div className="clearfix"></div>
 
                         <h3>Crops</h3>
 
-                        <button>New Crop</button>
+                        <button onClick={this.newVideo}>New Crop</button>
 
-                        {this.state.crops.map((item,i) => <ItemList key={i} video={item} onPlay={this.playVideo}/>)}
+                        {this.state.crops.map((item, i) => <ItemList key={i} video={item} onPlay={this.playVideo}/>)}
 
 
                     </div>
