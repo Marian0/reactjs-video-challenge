@@ -1,0 +1,19 @@
+
+
+.preview {
+    width: 50%;
+    float: left;
+    background-color: red;
+    min-height: 200px;
+}
+
+.preview video {
+    width: 100%;
+}
+
+.video-list {
+    width: 50%;
+    float: right;
+    background-color: blue;
+    min-height: 200px;
+}
