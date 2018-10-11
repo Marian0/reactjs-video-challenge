@@ -38,7 +38,7 @@ class Layout extends Component {
             {
                 src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
                 name: 'TEST 3',
-                from: 10,
+                from: 15,
                 to: null,
             }
         ];
@@ -64,19 +64,23 @@ class Layout extends Component {
 
                 <div className="container">
 
-                    <div className="col-md-6">
+                    <div className="col-md-7">
 
-                        <Player video={this.state.currentVideo} />
+                        <h2>{this.state.currentVideo.name}</h2>
+                        <Player video={this.state.currentVideo} showControls={true} />
 
                     </div>
 
-                    <div className="col-md-6">
+                    <div className="col-md-5">
 
                         <h3>Original</h3>
 
                         <ItemList video={this.originSource} onPlay={this.playVideo} />
 
+                        <div className="clearfix"></div>
+
                         <h3>Crops</h3>
+
                         <button>New Crop</button>
 
                         {this.state.crops.map((item,i) => <ItemList key={i} video={item} onPlay={this.playVideo}/>)}

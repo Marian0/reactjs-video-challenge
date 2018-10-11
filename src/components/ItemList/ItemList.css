@@ -1,0 +1,17 @@
+.item-list {
+    clear:both;
+
+}
+.item-list:hover {
+
+    background-color: lightblue;
+
+}
+
+.video-details {
+    text-align: left;
+}
+
+.video-details .btn {
+    margin: 0 4px;
+}

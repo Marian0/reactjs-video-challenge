@@ -1,19 +1,11 @@
-
-
-.preview {
-    width: 50%;
-    float: left;
-    background-color: red;
-    min-height: 200px;
-}
-
 div video {
     width: 100%;
 }
 
-.video-list {
-    width: 50%;
-    float: right;
-    background-color: blue;
-    min-height: 200px;
+.container h3 {
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+
 }
+

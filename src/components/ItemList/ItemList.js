@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import Player from "../player/Player";
+import './ItemList.css';
 
 class ItemList extends Component {
 
@@ -12,13 +14,19 @@ class ItemList extends Component {
     };
 
     render() {
-        const {name, from, to} = this.props.video;
+        const {name, from, to, src} = this.props.video;
         return (
-            <div>
-                <h4>{name}</h4>
-                <p>From: {from}</p>
-                <p>To: {to}</p>
-                <a href="#" onClick={this.playVideo}> CLICK </a>
+            <div className="item-list">
+                <div className="col-md-6">
+                    <Player video={this.props.video}/>
+                </div>
+                <div className="col-md-6 video-details">
+                    <h4>{name}</h4>
+                    <p>Sliced {from} - {to}</p>
+                    <a href="#" onClick={this.playVideo} className="btn btn-default btn-sm"><i className="glyphicon glyphicon-play-circle"></i></a>
+                    <a href="#" onClick={this.playVideo} className="btn btn-default btn-sm"><i className="glyphicon glyphicon-pencil"></i></a>
+                    <a href="#" onClick={this.playVideo} className="btn btn-default btn-sm"><i className="glyphicon glyphicon-trash"></i></a>
+                </div>
             </div>
 
         );
