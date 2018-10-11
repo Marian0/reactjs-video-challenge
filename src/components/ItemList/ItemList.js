@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Player from "../player/Player";
+import Player from "../Player/Player";
 import './ItemList.css';
 
 class ItemList extends Component {

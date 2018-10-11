@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './Layout.css';
 import Header from "../Header/Header";
-import Player from "../player/Player";
+import Player from "../Player/Player";
 import ItemList from "../ItemList/ItemList";
 
 
