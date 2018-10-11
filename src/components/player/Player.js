@@ -10,10 +10,18 @@ class Player extends Component {
     componentDidUpdate = () => {
         ReactDOM.findDOMNode(this.refs.videoPlayer).load();
     };
+
     render() {
 
         const {src, from, to, name} = this.props.video;
-        const host = `${src}#t=${from},${to}`;
+
+        //Default host
+        let host = `${src}#t=${from?from:0}`;
+
+        //Add to if it is defined
+        if (to === parseInt(to,10)) {
+            host += `,${to}`;
+        }
 
         return (
             <div id="video-player">
