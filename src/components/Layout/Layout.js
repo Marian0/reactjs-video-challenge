@@ -80,13 +80,26 @@ class Layout extends Component {
         });
     };
 
-    render() {
+    saveVideo = (video, key) => {
 
+        let crops = this.state.crops;
+
+        if (key) {
+            crops[key] = Object.assign({}, video);
+        } else {
+            crops.concat(video);
+        }
+
+        crops = Array.from(crops);
+        this.setState({crops});
+    };
+
+    render() {
         return (
             <div className="App">
                 <Header/>
 
-                <VideoModal {...this.state.modalProps} onModalClosed={this.closeModal} />
+                <VideoModal {...this.state.modalProps} onModalClosed={this.closeModal} onModalSaved={this.saveVideo} />
 
                 <div className="container">
 

@@ -8,7 +8,6 @@ class Player extends Component {
     }
 
     componentDidUpdate = () => {
-
         if (this.props.showControls) {
             ReactDOM.findDOMNode(this.refs.videoPlayer).load();
         }
