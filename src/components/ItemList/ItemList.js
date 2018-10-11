@@ -12,10 +12,10 @@ class ItemList extends Component {
     };
 
     render() {
-        const {title, from, to} = this.props.video;
+        const {name, from, to} = this.props.video;
         return (
             <div>
-                <h4>{title}</h4>
+                <h4>{name}</h4>
                 <p>From: {from}</p>
                 <p>To: {to}</p>
                 <a href="#" onClick={this.playVideo}> CLICK </a>

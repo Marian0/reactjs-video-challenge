@@ -15,8 +15,6 @@ class Player extends Component {
         const {src, from, to, name} = this.props.video;
         const host = `${src}#t=${from},${to}`;
 
-        console.log(host);
-
         return (
             <div id="video-player">
                 <h2>{name}</h2>

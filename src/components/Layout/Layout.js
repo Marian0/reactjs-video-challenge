@@ -64,13 +64,13 @@ class Layout extends Component {
 
                 <div className="container">
 
-                    <div className="preview">
+                    <div className="col-md-6">
 
                         <Player video={this.state.currentVideo} />
 
                     </div>
 
-                    <div className="video-list">
+                    <div className="col-md-6">
 
                         <h3>Original</h3>
 
