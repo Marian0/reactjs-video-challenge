@@ -21,28 +21,12 @@ class Layout extends Component {
 
         this.originSource.onPlay = this.playVideo;
 
-        const crops = [
+        let crops = [];
 
-            {
-                src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
-                name: 'TEST1',
-                from: 5,
-                to: 10,
-            },
-
-            {
-                src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
-                name: 'TEST2',
-                from: 10,
-                to: 20,
-            },
-            {
-                src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
-                name: 'TEST 3',
-                from: 15,
-                to: null,
-            }
-        ];
+        const savedVideos = localStorage.getItem("crops");
+        if (savedVideos) {
+            crops = JSON.parse(savedVideos);
+        }
 
         this.state = {
             currentVideo: this.originSource,
@@ -89,8 +73,11 @@ class Layout extends Component {
     removeVideo = (video_id) => {
 
         this.setState((prevState) => {
+            const newCrops = prevState.crops.filter((_, i) => i !== video_id);
+            localStorage.setItem("crops", JSON.stringify(newCrops));
+
             return {
-                crops: prevState.crops.filter((_, i) => i !== video_id)
+                crops: newCrops
             }
         });
 
@@ -106,7 +93,9 @@ class Layout extends Component {
             return {
                 crops: []
             };
-        })
+        });
+
+        localStorage.setItem("crops", JSON.stringify([]));
     };
 
     closeModal = () => {
@@ -138,6 +127,8 @@ class Layout extends Component {
                 crops: newCrops
             };
         });
+
+        localStorage.setItem("crops", JSON.stringify(newCrops));
     };
 
     renderModal = () => {

@@ -71,12 +71,12 @@ class VideoModal extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="">From</label>
+                            <label htmlFor="">Start Time (in seconds)</label>
                             <input type="number" className="form-control" value={from} onChange={this.handleChange} name="from"/>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="">To</label>
+                            <label htmlFor="">End Time (in seconds)</label>
                             <input type="number" className="form-control" value={to} onChange={this.handleChange} name="to"/>
                         </div>
 
