@@ -74,6 +74,19 @@ class Layout extends Component {
         });
     };
 
+    removeAllVideos = () => {
+
+        if (!window.confirm("Are you sure ?")) {
+            return;
+        }
+
+        this.setState(() => {
+            return {
+                crops: []
+            };
+        })
+    };
+
     closeModal = () => {
         this.setState(() => {
             return {
@@ -132,6 +145,7 @@ class Layout extends Component {
                         <h3>Crops</h3>
 
                         <button onClick={this.newVideo}>New Crop</button>
+                        <button onClick={this.removeAllVideos}>Remove All</button>
 
                         {this.state.crops.map((item, i) => <ItemList key={i} video={item} onPlay={this.playVideo}/>)}
 
