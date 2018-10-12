@@ -43,6 +43,7 @@ class Layout extends Component {
                 to: null,
             }
         ];
+
         this.state = {
             currentVideo: this.originSource,
             modalProps: {
@@ -53,48 +54,50 @@ class Layout extends Component {
             crops,
         };
 
-
     }
 
     playVideo = (video) => {
-        this.setState({currentVideo: video});
+        this.setState(() => {
+            return {currentVideo: video};
+        });
     };
 
     newVideo = () => {
-        this.setState({
-            modalProps: {
-                isVisible: true,
-                video: null,
-                key: null
+        this.setState(() => {
+            return {
+                modalProps: {
+                    isVisible: true,
+                    video: null,
+                    key: null
+                }
             }
         });
     };
 
     closeModal = () => {
-        this.setState({
-            modalProps: {
-                isVisible: false,
-                video: null,
-                key: null
+        this.setState(() => {
+            return {
+                modalProps: {
+                    isVisible: false,
+                    video: null,
+                    key: null
+                }
             }
         });
     };
 
     saveVideo = (video, key) => {
 
-        let crops = this.state.crops;
+        this.setState((prevState) => {
+            return {
+                crops: prevState.crops.concat(video)
+            };
 
-        if (key) {
-            crops[key] = Object.assign({}, video);
-        } else {
-            crops.concat(video);
-        }
-
-        crops = Array.from(crops);
-        this.setState({crops});
+        });
     };
 
     render() {
+        console.log(this.state.crops);
         return (
             <div className="App">
                 <Header/>

@@ -14,7 +14,7 @@ class VideoModal extends Component {
             video = {
                 name: "",
                 from: 0,
-                to: null
+                to: ""
 
             };
         }
@@ -29,7 +29,8 @@ class VideoModal extends Component {
         this.props.onModalClosed();
     };
 
-    handleSave = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
         //@todo: validate input this.state.video
         this.props.onModalSaved(this.state.video, this.props.indexKey);
         this.handleClose();
@@ -44,39 +45,48 @@ class VideoModal extends Component {
 
         video[name] = value;
 
-        this.setState({video});
+        this.setState(() => {
+            return {video};
+        });
     };
 
     render() {
         let {isVisible} = this.props;
+        let {name, from, to} = this.state.video;
+
+
         return (
             <Modal show={isVisible} onHide={this.handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>{this.state.modalTitle || "New Video"}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
 
-                    <div className="form-group">
-                        <label htmlFor="">Name</label>
-                        <input type="text" className="form-control" onChange={this.handleChange}  name="name"/>
-                    </div>
+                <form onSubmit={this.handleSubmit}>
 
-                    <div className="form-group">
-                        <label htmlFor="">From</label>
-                        <input type="number" className="form-control" onChange={this.handleChange}  name="from"/>
-                    </div>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{this.state.modalTitle || "New Video"}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
 
-                    <div className="form-group">
-                        <label htmlFor="">To</label>
-                        <input type="number" className="form-control" onChange={this.handleChange}  name="to"/>
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="">Name</label>
+                            <input type="text" className="form-control" value={name} onChange={this.handleChange} name="name"/>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="">From</label>
+                            <input type="number" className="form-control" value={from} onChange={this.handleChange} name="from"/>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="">To</label>
+                            <input type="number" className="form-control" value={to} onChange={this.handleChange} name="to"/>
+                        </div>
 
 
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={this.handleSave}>Save</Button>
-                    <Button onClick={this.handleClose}>Close</Button>
-                </Modal.Footer>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button type="submit" onClick={this.handleSave}>Save</Button>
+                        <Button onClick={this.handleClose}>Close</Button>
+                    </Modal.Footer>
+                </form>
             </Modal>
         );
     }
