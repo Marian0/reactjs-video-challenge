@@ -37,7 +37,7 @@ class ItemList extends Component {
                     {
                         this.props.hasOptions &&
                         <div>
-                            <p>Sliced from {from} to {to}</p>
+                            <p>Sliced from {from} to {to? to: 'end'}</p>
                             <button onClick={this.editVideo} className="btn btn-default btn-sm"><i
                                 className="glyphicon glyphicon-pencil"></i></button>
                             <button onClick={this.removeVideo} className="btn btn-default btn-sm"><i
