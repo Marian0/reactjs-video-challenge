@@ -74,6 +74,16 @@ class Layout extends Component {
         });
     };
 
+    removeVideo = (video_id) => {
+
+        this.setState((prevState) => {
+            return {
+                crops: prevState.crops.filter((_, i) => i !== video_id)
+            }
+        });
+
+    };
+
     removeAllVideos = () => {
 
         if (!window.confirm("Are you sure ?")) {
@@ -149,7 +159,7 @@ class Layout extends Component {
                         <button onClick={this.newVideo}>New Crop</button>
                         <button onClick={this.removeAllVideos}>Remove All</button>
 
-                        {this.state.crops.map((item, i) => <ItemList key={i} video={item} onPlay={this.playVideo}/>)}
+                        {this.state.crops.map((item, i) => <ItemList key={i} video={item} removeVideo={this.removeVideo} onPlay={this.playVideo}/>)}
 
 
                     </div>
