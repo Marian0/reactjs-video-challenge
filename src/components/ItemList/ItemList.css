@@ -1,10 +1,10 @@
 .item-list {
-    clear:both;
-
+    margin: 10px 0;
+    padding: 10px;
 }
 .item-list:hover {
 
-    background-color: lightblue;
+    background-color: #d3f6ff;
 
 }
 

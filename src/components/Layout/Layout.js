@@ -150,7 +150,7 @@ class Layout extends Component {
 
                         <h3>Original</h3>
 
-                        <ItemList video={this.originSource} onPlay={this.playVideo}/>
+                        <ItemList video={this.originSource} onPlay={this.playVideo} hasOptions={false} />
 
                         <div className="clearfix"></div>
 
@@ -159,7 +159,7 @@ class Layout extends Component {
                         <button onClick={this.newVideo}>New Crop</button>
                         <button onClick={this.removeAllVideos}>Remove All</button>
 
-                        {this.state.crops.map((item, i) => <ItemList key={i} video={item} removeVideo={this.removeVideo} onPlay={this.playVideo}/>)}
+                        {this.state.crops.map((item, i) => <ItemList key={i} video={item} hasOptions={true} removeVideo={this.removeVideo} onPlay={this.playVideo}/>)}
 
 
                     </div>
