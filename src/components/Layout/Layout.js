@@ -88,21 +88,29 @@ class Layout extends Component {
 
     saveVideo = (video, key) => {
 
+        const crops = this.state.crops.concat(video);
+
         this.setState((prevState) => {
             return {
-                crops: prevState.crops.concat(video)
+                crops
             };
-
         });
     };
 
+    renderModal = () => {
+        if (this.state.modalProps.isVisible) {
+            return (<VideoModal {...this.state.modalProps} onModalClosed={this.closeModal} onModalSaved={this.saveVideo} />);
+        }
+
+        return null;
+    };
+
     render() {
-        console.log(this.state.crops);
         return (
             <div className="App">
                 <Header/>
 
-                <VideoModal {...this.state.modalProps} onModalClosed={this.closeModal} onModalSaved={this.saveVideo} />
+                {this.renderModal()}
 
                 <div className="container">
 
@@ -130,7 +138,6 @@ class Layout extends Component {
 
                     </div>
                 </div>
-
 
             </div>
         );

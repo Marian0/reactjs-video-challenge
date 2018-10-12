@@ -6,7 +6,7 @@ class VideoModal extends Component {
     constructor(props, state) {
         super(props, state);
 
-        let {video, indexKey} = this.props;
+        let {video} = this.props;
         let modalTitle = "Edit Video";
         if (!video) {
             modalTitle = "New Video";
@@ -15,7 +15,6 @@ class VideoModal extends Component {
                 name: "",
                 from: 0,
                 to: ""
-
             };
         }
 

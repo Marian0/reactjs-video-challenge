@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 
 class Player extends Component {
 
-    constructor(props, state) {
-        super(props, state);
-    }
-
     componentDidUpdate = () => {
         if (this.props.showControls) {
             ReactDOM.findDOMNode(this.refs.videoPlayer).load();
@@ -15,7 +11,7 @@ class Player extends Component {
 
     render() {
 
-        const {src, from, to, name} = this.props.video;
+        const {src, from, to} = this.props.video;
 
         //Default host
         let host = `${src}#t=${from?from:0}`;
