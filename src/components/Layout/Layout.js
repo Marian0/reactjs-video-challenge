@@ -62,6 +62,18 @@ class Layout extends Component {
         });
     };
 
+    editVideo = (video, id) => {
+        this.setState(() => {
+            return {
+                modalProps: {
+                    isVisible: true,
+                    video,
+                    key: id
+                }
+            }
+        });
+    };
+
     newVideo = () => {
         this.setState(() => {
             return {
@@ -109,22 +121,29 @@ class Layout extends Component {
         });
     };
 
-    saveVideo = (video, key) => {
+    //New or Edit
+    saveVideo = (video) => {
 
+        const newCrops = this.state.crops.slice();
         video.src = this.originSource.src;
 
-        const crops = this.state.crops.concat(video);
+        if (this.state.modalProps.key) {
+            newCrops[this.state.modalProps.key] = video;
+        } else {
+            newCrops.unshift(video);
+        }
 
-        this.setState((prevState) => {
+        this.setState(() => {
             return {
-                crops
+                crops: newCrops
             };
         });
     };
 
     renderModal = () => {
         if (this.state.modalProps.isVisible) {
-            return (<VideoModal {...this.state.modalProps} onModalClosed={this.closeModal} onModalSaved={this.saveVideo} />);
+            return (
+                <VideoModal {...this.state.modalProps} onModalClosed={this.closeModal} onModalSaved={this.saveVideo}/>);
         }
 
         return null;
@@ -150,7 +169,7 @@ class Layout extends Component {
 
                         <h3>Original</h3>
 
-                        <ItemList video={this.originSource} onPlay={this.playVideo} hasOptions={false} />
+                        <ItemList video={this.originSource} onPlay={this.playVideo} hasOptions={false}/>
 
                         <div className="clearfix"></div>
 
@@ -159,7 +178,16 @@ class Layout extends Component {
                         <button onClick={this.newVideo}>New Crop</button>
                         <button onClick={this.removeAllVideos}>Remove All</button>
 
-                        {this.state.crops.map((item, i) => <ItemList key={i} video={item} hasOptions={true} removeVideo={this.removeVideo} onPlay={this.playVideo}/>)}
+                        {
+                            this.state.crops.map((item, i) => <ItemList
+                                key={i}
+                                video={item}
+                                hasOptions={true}
+                                removeVideo={this.removeVideo}
+                                onPlay={this.playVideo}
+                                onEdit={this.editVideo}
+                            />)
+                        }
 
 
                     </div>

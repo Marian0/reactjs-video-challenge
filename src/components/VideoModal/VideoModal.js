@@ -29,9 +29,10 @@ class VideoModal extends Component {
     };
 
     handleSubmit = (event) => {
+        console.log()
         event.preventDefault();
         //@todo: validate input this.state.video
-        this.props.onModalSaved(this.state.video, this.props.indexKey);
+        this.props.onModalSaved(this.state.video, this.state.video);
         this.handleClose();
     };
 
