@@ -101,6 +101,8 @@ class Layout extends Component {
 
     saveVideo = (video, key) => {
 
+        video.src = this.originSource.src;
+
         const crops = this.state.crops.concat(video);
 
         this.setState((prevState) => {
