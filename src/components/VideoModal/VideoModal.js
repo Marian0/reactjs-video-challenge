@@ -20,7 +20,8 @@ class VideoModal extends Component {
 
         this.state = {
             video,
-            modalTitle
+            modalTitle,
+            key: this.props.videoId
         };
     }
 
@@ -31,7 +32,7 @@ class VideoModal extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         //@todo: validate input this.state.video
-        this.props.onModalSaved(this.state.video, this.state.video);
+        this.props.onModalSaved(this.state.video, this.state.key);
         this.handleClose();
     };
 
