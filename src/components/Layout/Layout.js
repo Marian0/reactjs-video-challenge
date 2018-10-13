@@ -157,7 +157,7 @@ class Layout extends Component {
                         <h2>{this.state.currentVideo.name}</h2>
                         <Player video={this.state.currentVideo} showControls={true}/>
 
-                        <p className="foot">ReactJS Application created for coding challenge by <a href="https://www.linkedin.com/in/marianopeyregne/" target="_blank">Mariano Peyregne</a></p>
+                        <p className="foot">ReactJS Application created for coding challenge by <a href="https://www.linkedin.com/in/marianopeyregne/" rel="noopener noreferrer" target="_blank">Mariano Peyregne</a></p>
 
                     </div>
 
