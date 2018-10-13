@@ -83,8 +83,14 @@ class VideoModal extends Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button type="submit" onClick={this.handleSave}>Save</Button>
-                        <Button onClick={this.handleClose}>Close</Button>
+                        <Button type="submit" onClick={this.handleSave}>
+                            <i className="glyphicon glyphicon-save"></i>
+                            Save
+                        </Button>
+                        <Button onClick={this.handleClose}>
+                            <i className="glyphicon glyphicon-remove"></i>
+                            Close
+                        </Button>
                     </Modal.Footer>
                 </form>
             </Modal>

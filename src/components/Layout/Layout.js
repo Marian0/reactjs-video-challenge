@@ -171,8 +171,17 @@ class Layout extends Component {
 
                         <h3>Crops</h3>
 
-                        <button onClick={this.newVideo}>New Crop</button>
-                        <button onClick={this.removeAllVideos}>Remove All</button>
+                        <button onClick={this.newVideo} className="btn btn-default pull-right">
+                            <i className="glyphicon glyphicon-plus"></i>
+                             New Crop
+                        </button>
+
+                        <button onClick={this.removeAllVideos} className="btn btn-danger pull-left">
+                            <i className="glyphicon glyphicon-trash"></i>
+                             Remove All
+                        </button>
+
+                        <div className="clearfix"></div>
 
                         {
                             this.state.crops.map((item, i) => <ItemList
