@@ -9,9 +9,9 @@ import VideoModal from "../VideoModal/VideoModal";
 class Layout extends Component {
 
     constructor(props, state) {
-
         super(props, state);
 
+        //Original Video Source
         this.originSource = {
             src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
             name: 'Full Video',
@@ -21,13 +21,16 @@ class Layout extends Component {
 
         this.originSource.onPlay = this.playVideo;
 
+        //Video crop list
         let crops = [];
 
+        //Getting them from browser Local Storage
         const savedVideos = localStorage.getItem("crops");
         if (savedVideos) {
             crops = JSON.parse(savedVideos);
         }
 
+        //Default App State
         this.state = {
             currentVideo: this.originSource,
             modalProps: {
@@ -37,7 +40,6 @@ class Layout extends Component {
             },
             crops,
         };
-
     }
 
     playVideo = (video) => {
@@ -116,7 +118,8 @@ class Layout extends Component {
         const newCrops = this.state.crops.slice();
         video.src = this.originSource.src;
 
-        if (this.state.modalProps.key) {
+        if (this.state.modalProps.key === parseInt(this.state.modalProps.key, 10)) {
+            //key is integer
             newCrops[this.state.modalProps.key] = video;
         } else {
             newCrops.unshift(video);
@@ -180,7 +183,6 @@ class Layout extends Component {
                             />)
                         }
 
-
                     </div>
                 </div>
 
@@ -188,6 +190,5 @@ class Layout extends Component {
         );
     }
 }
-
 
 export default Layout;
