@@ -68,7 +68,7 @@ class VideoModal extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-µ
+
         if (!this.validateVideo(this.state.video)) {
             return;
         }
