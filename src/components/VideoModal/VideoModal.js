@@ -36,19 +36,19 @@ class VideoModal extends Component {
         try {
 
             if (!video.name || video.name.length === 0) {
-                throw "Please, enter a valid name";
+                throw new Error("Please, enter a valid name");
             }
 
-            if (parseInt(video.from) != video.from) {
-                throw "Please, enter a valid from";
+            if (parseInt(video.from) !== video.from) {
+                throw new Error("Please, enter a valid from");
             }
 
-            if (parseInt(video.from) != video.from) {
-                throw "Please, enter a valid to";
+            if (parseInt(video.from) !== video.from) {
+                throw new Error("Please, enter a valid to");
             }
 
             if (parseInt(video.from) > parseInt(video.to)) {
-                throw "To should be greater than from";
+                throw new Error("To should be greater than from");
             }
 
             return true;
@@ -57,7 +57,7 @@ class VideoModal extends Component {
 
             this.setState(() => {
                 return {
-                    error: err
+                    error: err.message
                 }
             });
 
@@ -68,8 +68,7 @@ class VideoModal extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        //@todo: validate input this.state.video
-
+µ
         if (!this.validateVideo(this.state.video)) {
             return;
         }
