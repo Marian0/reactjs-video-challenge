@@ -39,11 +39,11 @@ class VideoModal extends Component {
                 throw new Error("Please, enter a valid name");
             }
 
-            if (parseInt(video.from) !== video.from) {
+            if (!video.from || !Number.isInteger(+video.from)) {
                 throw new Error("Please, enter a valid from");
             }
 
-            if (parseInt(video.from) !== video.from) {
+            if (!video.to || !Number.isInteger(+video.to)) {
                 throw new Error("Please, enter a valid to");
             }
 
