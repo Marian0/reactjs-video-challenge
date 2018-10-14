@@ -22,7 +22,8 @@ class VideoModal extends Component {
         this.state = {
             video,
             modalTitle,
-            key: this.props.videoId
+            key: this.props.videoId,
+            error: ""
         };
     }
 
@@ -30,9 +31,49 @@ class VideoModal extends Component {
         this.props.onModalClosed();
     };
 
+    validateVideo = (video) => {
+
+        try {
+
+            if (!video.name || video.name.length === 0) {
+                throw "Please, enter a valid name";
+            }
+
+            if (parseInt(video.from) != video.from) {
+                throw "Please, enter a valid from";
+            }
+
+            if (parseInt(video.from) != video.from) {
+                throw "Please, enter a valid to";
+            }
+
+            if (parseInt(video.from) > parseInt(video.to)) {
+                throw "To should be greater than from";
+            }
+
+            return true;
+
+        } catch (err) {
+
+            this.setState(() => {
+                return {
+                    error: err
+                }
+            });
+
+            return false;
+        }
+
+    };
+
     handleSubmit = (event) => {
         event.preventDefault();
         //@todo: validate input this.state.video
+
+        if (!this.validateVideo(this.state.video)) {
+            return;
+        }
+
         this.props.onModalSaved(this.state.video, this.state.key);
         this.handleClose();
     };
@@ -65,6 +106,13 @@ class VideoModal extends Component {
                         <Modal.Title>{this.state.modalTitle || "New Video"}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+
+                        {
+                            this.state.error &&
+                                <div className="alert alert-danger">
+                                    { this.state.error }
+                                </div>
+                        }
 
                         <div className="form-group">
                             <label htmlFor="">Name</label>
