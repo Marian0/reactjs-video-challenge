@@ -13,8 +13,9 @@ class VideoModal extends Component {
 
             video = {
                 name: "",
-                from: 0,
-                to: ""
+                from: "",
+                to: "",
+                tags: ""
             };
         }
 
@@ -52,7 +53,7 @@ class VideoModal extends Component {
 
     render() {
         let {isVisible} = this.props;
-        let {name, from, to} = this.state.video;
+        let {name, from, to, tags} = this.state.video;
 
 
         return (
@@ -78,6 +79,11 @@ class VideoModal extends Component {
                         <div className="form-group">
                             <label htmlFor="">End Time (in seconds)</label>
                             <input type="number" className="form-control" value={to} onChange={this.handleChange} name="to"/>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="">Tags</label>
+                            <input type="text" className="form-control" value={tags} onChange={this.handleChange} name="tags"/>
                         </div>
 
 

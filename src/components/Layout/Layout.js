@@ -34,6 +34,8 @@ class Layout extends Component {
         this.state = {
             currentVideo: this.originSource,
             crops,
+            keywords: "",
+            showing: crops
         };
     }
 
@@ -41,6 +43,9 @@ class Layout extends Component {
         this.setState(() => {
             return {currentVideo: video};
         });
+
+        //Forces browser to reload HTML5 video
+        document.getElementById("mainPlayer").load();
     };
 
     removeVideo = (video_id) => {
@@ -51,10 +56,34 @@ class Layout extends Component {
 
             return {
                 crops: newCrops,
-                currentVideo: this.originSource
+                currentVideo: this.originSource,
+                keywords: "",
+                showing: newCrops
             }
         });
 
+        this.filterCrops(this.state.keywords);
+
+    };
+
+    filterCrops = (keywords) => {
+
+        let newShowing = this.state.crops;
+
+        if (keywords.length > 0) {
+            newShowing = this.state.crops.filter((video) => {
+                return video.tags.toLowerCase().includes(keywords);
+            });
+        }
+
+        this.setState(() => {
+
+            return {
+                keywords,
+                showing: newShowing
+            };
+
+        });
     };
 
     removeAllVideos = () => {
@@ -66,7 +95,9 @@ class Layout extends Component {
         this.setState(() => {
             return {
                 crops: [],
-                currentVideo: this.originSource
+                currentVideo: this.originSource,
+                keywords: "",
+                showing: []
             };
         });
 
@@ -87,9 +118,12 @@ class Layout extends Component {
         }
 
         this.setState(() => {
+
             return {
                 crops: newCrops,
-                currentVideo: video
+                currentVideo: video,
+                keywords: "",
+                showing: newCrops
             };
         });
 
@@ -125,6 +159,8 @@ class Layout extends Component {
                             saveVideo={this.saveVideo}
                             playVideo={this.playVideo}
                             removeVideo={this.removeVideo}
+                            filterCrops={this.filterCrops}
+                            showing={this.state.showing}
                             crops={this.state.crops}
                         />
 

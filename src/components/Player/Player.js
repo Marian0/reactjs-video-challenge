@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 
 class Player extends Component {
-
-    componentDidUpdate = () => {
-        ReactDOM.findDOMNode(this.refs.videoPlayer).load();
-    };
 
     render() {
 
@@ -21,7 +16,7 @@ class Player extends Component {
 
         return (
             <div id="video-player">
-                <video controls={this.props.showControls} ref="videoPlayer">
+                <video controls={this.props.showControls} id={this.props.showControls ? "mainPlayer" : ""} >
                     <source src={host} />
                 </video>
             </div>

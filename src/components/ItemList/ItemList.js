@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Player from "../Player/Player";
 import './ItemList.css';
+import TagTooltip from "../TagTooltip/TagTooltip";
 
 class ItemList extends Component {
 
@@ -24,7 +25,7 @@ class ItemList extends Component {
     };
 
     render() {
-        const {name, from, to} = this.props.video;
+        const {name, from, to, tags} = this.props.video;
         return (
             <div className="item-list">
                 <div className="col-md-6">
@@ -33,7 +34,7 @@ class ItemList extends Component {
                     </button>
                 </div>
                 <div className="col-md-6 video-details">
-                    <h4>{name}</h4>
+                    <h4><TagTooltip tags={tags}/> {name}</h4>
                     {
                         this.props.hasOptions &&
                         <div>

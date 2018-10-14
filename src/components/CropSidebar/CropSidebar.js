@@ -62,6 +62,10 @@ class CropSidebar extends Component {
         return null;
     };
 
+    handleFilter = (event) => {
+        this.props.filterCrops(event.target.value.toLowerCase());
+    };
+
     render() {
 
         return (
@@ -84,7 +88,18 @@ class CropSidebar extends Component {
                 <div className="clearfix"></div>
 
                 {
-                    this.props.crops.map((item, i) => <ItemList
+                    this.props.crops.length > 0 &&
+                    <form action="">
+                        <br/>
+                        <div className="form-group">
+                            <input type="text" onChange={this.handleFilter} placeholder="Type to filter..."
+                                   className="form-control"/>
+                        </div>
+                    </form>
+                }
+
+                {
+                    this.props.showing.map((item, i) => <ItemList
                         key={i}
                         video={item}
                         hasOptions={true}
