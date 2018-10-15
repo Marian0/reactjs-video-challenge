@@ -88,7 +88,7 @@ class CropSidebar extends Component {
                 <div className="clearfix"></div>
 
                 {
-                    this.props.crops.length > 0 &&
+                    this.props.cropsCount > 0 &&
                     <form action="">
                         <br/>
                         <div className="form-group">
@@ -112,7 +112,7 @@ class CropSidebar extends Component {
                 <br/>
 
                 {
-                    this.props.crops.length === 0 &&
+                    this.props.cropsCount === 0 &&
                     <div className="alert alert-info starting">Let's start creating new videos by clicking on New Crop button !</div>
                 }
             </div>

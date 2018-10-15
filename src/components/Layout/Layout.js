@@ -161,7 +161,7 @@ class Layout extends Component {
                             removeVideo={this.removeVideo}
                             filterCrops={this.filterCrops}
                             showing={this.state.showing}
-                            crops={this.state.crops}
+                            cropsCount={this.state.crops.length}
                         />
 
                     </div>
