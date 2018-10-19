@@ -16,7 +16,7 @@ class Player extends Component {
         let host = `${src}#t=${from ? from : 0}`;
 
         //Add to if it is defined
-        if (to === parseInt(to, 10)) {
+        if (Number.isInteger(parseInt(to))) {
             host += `,${to}`;
         }
 
