@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types'; // ES6
 
 class Player extends Component {
 
@@ -30,5 +30,9 @@ class Player extends Component {
     }
 }
 
+Player.propTypes = {
+    video: PropTypes.object,
+    showControls: PropTypes.bool,
+};
 
 export default Player;
