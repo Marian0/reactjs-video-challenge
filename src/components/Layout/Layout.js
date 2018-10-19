@@ -68,9 +68,7 @@ class Layout extends Component {
                 showing: newCrops
             }
         });
-
-        this.filterCrops(this.state.keywords);
-
+        
     };
 
     filterCrops = (keywords) => {
