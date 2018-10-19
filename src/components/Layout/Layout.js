@@ -13,7 +13,7 @@ class Layout extends Component {
 
         //Original Video Source
         this.originSource = {
-            src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+            src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
             name: 'Full Video',
             from: 0,
             to: null,
@@ -44,8 +44,15 @@ class Layout extends Component {
             return {currentVideo: video};
         });
 
+        const videoContainer = document.getElementById("mainPlayer");
         //Forces browser to reload HTML5 video
-        document.getElementById("mainPlayer").load();
+        videoContainer.load();
+
+        videoContainer.addEventListener('loadeddata', function() {
+            // Video is loaded and can be played
+            videoContainer.play();
+        }, false);
+
     };
 
     removeVideo = (video_id) => {
